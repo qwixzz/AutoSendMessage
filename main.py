@@ -42,6 +42,13 @@ if len(sys.argv) != 2 or sys.argv[1] != "--setall":
         else:
             with open("text.txt", "r", encoding="utf-8") as file:
                 message = f"[Отправлено с AutoSendMessage](https://github.com/qwixzz/AutoSendMessage)\n{file.read()}"
+            while True:
+                try:
+                    cooldown = int(input("Выберите промежток времени между сообщениями в виде числа: "))
+                    break
+                except:
+                    print("Ошибка! Промежуток между сообщениями должен быть в виде числа")
+                
             token = config_data["token"]
             channel_id = config_data["channel_id"]
             
@@ -63,4 +70,4 @@ if __name__ == "__main__":
     while True:
         res = requests.post(url, payload, headers=headers)
         log_functions.send(res.status_code, res.reason, channel_id)
-        time.sleep(60)
+        time.sleep(cooldown)
