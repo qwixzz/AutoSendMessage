@@ -41,7 +41,7 @@ if len(sys.argv) != 2 or sys.argv[1] != "--setall":
             sys.exit(1)
         else:
             with open("text.txt", "r", encoding="utf-8") as file:
-                message = f"[Отправлено с AutoSendMessage](https://github.com/qwixzz/AutoSendMessage)\n{file.read()}"
+                message = f"**Отправлено с помощью github.com/qwixzz/AutoSendMessage**\n{file.read()}"
             while True:
                 try:
                     cooldown = int(input("Выберите промежток времени между сообщениями в виде числа: "))

@@ -21,6 +21,7 @@ def send(status_code, reason, channel):
             current_time = now.strftime("%H:%M:%S")
 
             logs.write(f"\n[{today} {current_time}] Отправилось сообщение в текстовой канал {channel}")
+            print(f"[{today} {current_time}] Отправилось сообщение в текстовой канал {channel}")
         
         else:
             today = dt.date.today()
@@ -28,3 +29,4 @@ def send(status_code, reason, channel):
             current_time = now.strftime("%H:%M:%S")
 
             logs.write(f"\n[{today} {current_time}] Не получилось отправить сообщение в текстовой канал {channel} {reason}")
+            print(f"[{today} {current_time}] Не получилось отправить сообщение в текстовой канал {channel} {reason}")
